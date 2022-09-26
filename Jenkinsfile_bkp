@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('pull code from git repo') {
+            steps {
+                git credentialsId: 'githubaccess', url: 'git@github.com:shekharaws/java-hello-world-with-maven.git'
+            }
+        }
+
+        stage('triggering aws code build project') {
+            steps {}
+        }
+    }
+}
