@@ -18,7 +18,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                 
-                script {
+                script {checkout_git.checkout_git
 				dir("dir1") {checkout_git.checkout_git("java-hello-world-with-maven")}
                 dir("dir2") {checkout_git.checkout_git("tomcat")}
 				       }
