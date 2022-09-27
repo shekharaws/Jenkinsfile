@@ -20,6 +20,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Maven Build') {
+            steps {
+                script
+                {
+                    maven_build.maven_build ()
+                }
+            }
+        }
         
     }
     
