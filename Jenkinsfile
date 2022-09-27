@@ -17,26 +17,14 @@ pipeline {
 
         stage('Checkout code from Git') {
             steps {
-                
-                script {checkout_git.checkout_git
-				dir("dir1") {checkout_git.checkout_git("java-hello-world-with-maven")}
-                dir("dir2") {checkout_git.checkout_git("tomcat")}
-				       }
-                
-                
+                parallel (
+                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven")}}},
+                "2": {dir("boxfuse-sample-java-war-hello"){script {checkout_git.checkout_git("boxfuse-sample-java-war-hello")}}}
+                )
             }
         }
-
-                stage('Maven Build') {
-            steps {
-                script 
-                {
-                    dir("dir1") {maven_build.maven_build()}
-                }
-            }
         
         
     }                
         
     }
-}
