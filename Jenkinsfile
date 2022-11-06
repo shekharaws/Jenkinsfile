@@ -17,13 +17,30 @@ pipeline {
 
         stage('Checkout code from Git') {
             steps {
-                parallel (
-                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}},
-                "2": {dir("boxfuse-sample-java-war-hello"){script {checkout_git.checkout_git("boxfuse-sample-java-war-hello","master")}}}
-                )
+
+                dir("tag_code") {
+                    script {checkout_git.checkout_git("sparkjava-war-example", "master")}
+                }
             }
         }
-        
+
+        stage('create tag on git repo') {
+            steps {
+                dir("tag_code") {
+                    script { create_tag.create_tag("${tag}")}
+                }
+            }
+        }
+
+        stage('Trigger AWS Code Build') {
+            steps {
+                dir("tag_code")
+                {
+
+                    script {aws_codebuild.aws_codebuild("", "${tag}")}
+                }
+            }
+        }       
         
     }                
         
