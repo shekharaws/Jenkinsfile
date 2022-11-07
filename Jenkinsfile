@@ -19,7 +19,7 @@ pipeline {
             steps {
 
                 dir("tag_code") {
-                    script {checkout_git.checkout_git("sparkjava-war-example", "master")}
+                    script {checkout_git.checkout_git("boxfuse-sample-java-war-hello.git", "master")}
                 }
             }
         }
