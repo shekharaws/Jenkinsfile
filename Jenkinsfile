@@ -27,7 +27,7 @@ pipeline {
         stage('create tag on git repo') {
             steps {
                 dir("tag_code") {
-                     { create_tag.create_tag("${tag}")}}
+                    script {create_tag.create_tag("${tag}")}}
             }
         }
 
