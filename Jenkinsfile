@@ -19,7 +19,7 @@ pipeline {
             steps {
 
                 dir("tag_code") {
-                    script {checkout_git.checkout_git("boxfuse-sample-java-war-hello", "master")}
+                    script {checkout_git.checkout_git("hello-world-tomcat", "master")}
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
                 dir("tag_code")
                 {
 
-                    script {aws_codebuild.aws_codebuild("project-2", "${tag}")}
+                    script {aws_codebuild.aws_codebuild("project-3", "${tag}")}
                 }
             }
         }       
