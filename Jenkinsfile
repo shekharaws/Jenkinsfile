@@ -24,19 +24,19 @@ pipeline {
             }
         }
 
-        //stage('create tag on git repo') {
-            //steps {
-                //dir("tag_code") {
-                    // { create_tag.create_tag("${tag}")}}
-            //}
-        //}
+        stage('create tag on git repo') {
+            steps {
+                dir("tag_code") {
+                     { create_tag.create_tag("${tag}")}}
+            }
+        }
 
         stage('Trigger AWS Code Build') {
             steps {
                 dir("tag_code")
                 {
 
-                    script {aws_codebuild.aws_codebuild("project-2")}
+                    script {aws_codebuild.aws_codebuild("project-2", "${tag}")}
                 }
             }
         }       
