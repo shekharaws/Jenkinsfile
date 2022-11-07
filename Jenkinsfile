@@ -36,7 +36,7 @@ pipeline {
                 dir("tag_code")
                 {
 
-                    script {aws_codebuild.aws_codebuild("project-1")}
+                    script {aws_codebuild.aws_codebuild("project-2")}
                 }
             }
         }       
