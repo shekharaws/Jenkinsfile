@@ -1,10 +1,10 @@
-def deploy_tomcat() {
+def deploy_tomcat( String tag, String env) {
 
     echo "deploying to tomcat server."
-    ssh '''
+    sh """
         cd ${WORKSPACE}/shellscripts
-        sh ./deploy_java.sh
-        '''
+        sh ./deploy_java.sh ${tag} ${env}
+        """
 
 }
 
