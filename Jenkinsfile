@@ -19,7 +19,7 @@ pipeline {
             steps {
 
                 dir("tag_code") {
-                    script {checkout_git.checkout_git("hello-world-war", "master")}
+                    script {checkout_git.checkout_git("sparkjava-war-example", "master")}
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 dir("tag_code")
                 {
-                  script {aws_codebuild.aws_codebuild("codebuild-project", "${tag}")}
+                  script {aws_codebuild.aws_codebuild("my-jenkins-project", "${tag}")}
                 }
             }
         }       

@@ -14,4 +14,4 @@ ssh ec2-user@${IP} << HERE
     ./shutdown.sh
     ./startup.sh
 
-HERE    
+HERE        
