@@ -35,7 +35,7 @@ pipeline {
             steps {
                 dir("tag_code")
                 {
-                  script {aws_codebuild.aws_codebuild("", "${tag}")}
+                  script {aws_codebuild.aws_codebuild("my-jenkins-project", "${tag}")}
                 }
             }
         }       
