@@ -13,4 +13,5 @@ ssh ec2-user@${IP} << HERE
     cd /home/ec2-user/tomcat/apache-tomcat-9.0.71/bin/
     ./shutdown.sh
     ./startup.sh
-HERE            
+
+`HERE'            
